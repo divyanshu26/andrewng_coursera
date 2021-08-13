@@ -50,10 +50,10 @@ email_contents = regexprep(email_contents, '[$]+', 'dollar');
 
 % Output the email to screen as well
 fprintf('\n==== Processed Email ====\n\n');
-
+disp(email_contents);
 % Process file
 l = 0;
-
+vocab_len = length(vocabList);
 while ~isempty(email_contents)
 
     % Tokenize and also get rid of any punctuation
@@ -61,6 +61,7 @@ while ~isempty(email_contents)
        strtok(email_contents, ...
               [' @$/#.-:&*+=[]?!(){},''">_<;%' char(10) char(13)]);
    
+    
     % Remove any non alphanumeric characters
     str = regexprep(str, '[^a-zA-Z0-9]', '');
 
@@ -98,7 +99,11 @@ while ~isempty(email_contents)
     %
 
 
-
+    for i = 1:vocab_len
+        if strcmp(str,vocabList{i})
+            word_indices(end + 1 ) = i;
+        endif;
+    endfor;
 
 
 
