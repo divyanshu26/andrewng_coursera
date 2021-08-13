@@ -30,7 +30,8 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
+probability_vals = X * all_theta';
+[garb,p] = max(probability_vals,[],2);
 
 
 

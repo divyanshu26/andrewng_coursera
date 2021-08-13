@@ -21,9 +21,21 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+disp(size(Theta1));
+disp(size(Theta2));
 
 
+X = [ones(m,1) X];
+hidden_layer_vals = X * Theta1';
+hidden_layer_vals = sigmoid(hidden_layer_vals);
 
+
+hidden_layer_vals = [ones(m,1) hidden_layer_vals];
+
+
+output = sigmoid(hidden_layer_vals * Theta2');
+
+[garb,p] = max(output,[],2);
 
 
 
